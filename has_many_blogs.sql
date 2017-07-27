@@ -7,3 +7,15 @@ CREATE TABLE users (
   created_at TIMESTAMP with time zone,
   updated_at TIMESTAMP with time zone
 );
+
+DROP TABLE IF EXISTS posts;
+CREATE TABLE posts (
+  id SERIAL NOT NULL,
+  user_id INTEGER NOT NULL REFERENCES users(id),
+  title VARCHAR(180) DEFAULT NULL,
+  url VARCHAR(510) DEFAULT NULL,
+  content TEXT DEFAULT NULL,
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
+);
+
