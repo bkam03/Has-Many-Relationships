@@ -40,7 +40,4 @@ CREATE TABLE comments (
 
 \i scripts/blog_data.sql;
 
-
-
-
-\c bk;
+--\c bk;
