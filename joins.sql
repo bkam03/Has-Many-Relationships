@@ -52,7 +52,12 @@ SELECT posts.title, posts.content, users.username
 
 --7Create a query to get the all rows in the comments table, showing post title (aliased as 'Post Title'), and the all the comment's fields
 
-
+SELECT *, posts.title AS Post_Title
+  FROM
+    comments
+    INNER JOIN
+    posts
+  ON comments.post_id = posts.id;
 
 --8Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
 
