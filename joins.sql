@@ -52,7 +52,7 @@ SELECT posts.title, posts.content, users.username
 
 --7Create a query to get the all rows in the comments table, showing post title (aliased as 'Post Title'), and the all the comment's fields
 
-SELECT *, posts.title AS Post_Title
+SELECT posts.title AS Post_Title, comments.*
   FROM
     comments
     INNER JOIN
@@ -61,7 +61,7 @@ SELECT *, posts.title AS Post_Title
 
 --8Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
 
-SELECT comments.*, posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
+SELECT posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
   FROM
     comments
     INNER JOIN
@@ -72,18 +72,25 @@ SELECT comments.*, posts.title AS post_title, posts.url AS post_url, comments.bo
 
 --9Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created after January 1, 2015
 
-SELECT comments.*, posts.tiTle AS post_title, posts.url AS post_url, comments.body AS comment_body
+SELECT posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
   FROM
     comments
     INNER JOIN
     posts
-    ON comments.post_id = posts.id
+      ON comments.post_id = posts.id
   WHERE posts.created_at > '1-1-2015';
 
 --10 Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the comment body contains the word 'USB'
 
-
-
+SELECT posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
+  FROM
+    comments
+    INNER JOIN
+    posts
+      ON comments.post_id = posts.id
+  WHERE
+    comments.body LIKE '%USB%'
+  LIMIT 1;
 --11 Create a query to get the post title (aliased as post_title), first name of the author of the post, last name of the author of the post, and comment body (aliased to comment_body), where the comment body contains the word 'matrix' ( should have 855 results )
 
 
