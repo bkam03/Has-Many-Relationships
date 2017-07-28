@@ -57,10 +57,17 @@ SELECT *, posts.title AS Post_Title
     comments
     INNER JOIN
     posts
-  ON comments.post_id = posts.id;
+      ON comments.post_id = posts.id;
 
 --8Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created before January 1, 2015
 
+SELECT comments.*, posts.title AS post_title, posts.url AS post_url, comments.body AS comment_body
+  FROM
+    comments
+    INNER JOIN
+    posts
+      ON comments.post_id = posts.id
+  WHERE posts.created_at < '1-1-2015';
 
 
 --9Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created after January 1, 2015
