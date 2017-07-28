@@ -39,7 +39,7 @@ SELECT users.username
     posts
       ON posts.user_id = users.id
   WHERE
-    posts.created_at > '1-1-2015'
+    posts.created_at > '2015-1-1'
   ORDER BY posts.created_at ASC;
 
 --6Create a query to get the post title, post content, and user's username where the user who created the post joined before January 1, 2015
@@ -51,13 +51,13 @@ SELECT posts.title, posts.content, users.username
     users
       ON posts.user_id = users.id
   WHERE
-    Posts.created_at < '1-1-2015'
+    Posts.created_at < '2015-1-1'
   ORDER BY posts.created_at ASC;
 
 
 --7Create a query to get the all rows in the comments table, showing post title (aliased as 'Post Title'), and the all the comment's fields
 
-SELECT posts.title AS Post_Title, comments.*
+SELECT posts.title AS "Post Title", comments.*
   FROM
     comments
     INNER JOIN
@@ -73,7 +73,7 @@ SELECT posts.title AS post_title, posts.url AS post_url, comments.body AS commen
     posts
       ON comments.post_id = posts.id
   WHERE
-    posts.created_at < '1-1-2015';
+    posts.created_at < '2015-1-1';
 
 
 --9Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the post was created after January 1, 2015
@@ -85,7 +85,7 @@ SELECT posts.title AS post_title, posts.url AS post_url, comments.body AS commen
     posts
       ON comments.post_id = posts.id
   WHERE
-    posts.created_at > '1-1-2015';
+    posts.created_at > '2015-1-1';
 
 --10 Create a query to get the all rows in the comments table, showing post title (aliased as post_title), post url (ailased as post_url), and the comment body (aliased as comment_body) where the comment body contains the word 'USB'
 
@@ -157,7 +157,7 @@ SELECT COUNT(comments.*)
     comments
       ON posts.id = comments.post_id
   WHERE
-    posts.created_at > '7-14-2015';
+    posts.created_at > '2015-14-7';
 
 
 --Find all users who comment about 'programming' ( should have 336 results)
