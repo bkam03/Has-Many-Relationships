@@ -1,3 +1,14 @@
+DROP DATABASE IF EXISTS has_many_blogs;
+DROP USER has_many_user;
+
+CREATE USER has_many_user;
+
+CREATE DATABASE has_many_blogs WITH OWNER has_many_user;
+
+
+\c has_many_blogs;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL NOT NULL PRIMARY KEY,
@@ -8,9 +19,8 @@ CREATE TABLE users (
   updated_at TIMESTAMP with time zone
 );
 
-DROP TABLE IF EXISTS posts;
 CREATE TABLE posts (
-  id SERIAL NOT NULL,
+  id SERIAL NOT NULL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(id),
   title VARCHAR(180) DEFAULT NULL,
   url VARCHAR(510) DEFAULT NULL,
@@ -19,7 +29,6 @@ CREATE TABLE posts (
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
 
-DROP TABLE IF EXISTS comments;
 CREATE TABLE comments (
   id SERIAL NOT NULL,
   user_id INTEGER NOT NULL REFERENCES users(id),
@@ -28,3 +37,8 @@ CREATE TABLE comments (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
+
+
+
+
+\c bk;
