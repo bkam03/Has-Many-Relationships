@@ -29,7 +29,14 @@ SELECT posts.*, users.username
 
 --5Create a query to get usernames from the users table where the user has created a post after January 1, 2015
 
-
+SELECT users.username, posts.created_at
+  FROM
+    users
+    INNER JOIN
+    posts
+      ON posts.user_id = users.id
+  WHERE posts.created_at > '1-1-2015'
+  ORDER BY created_at ASC;
 
 --6Create a query to get the post title, post content, and user's username where the user who created the post joined before January 1, 2015
 
