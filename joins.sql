@@ -146,3 +146,27 @@ SELECT users.first_name AS post_author_first_name, users.last_name AS post_autho
       comments.body LIKE '%firewall%' )
     AND
     posts.content LIKE '%nemo%';
+
+
+--Count how many comments have been written on posts that have been created after July 14, 2015 ( should have one result, the value of the count should be 27)
+
+SELECT COUNT(comments.*)
+  FROM
+    posts
+    INNER JOIN
+    comments
+      ON posts.id = comments.post_id
+  WHERE
+    posts.created_at > '7-14-2015';
+
+
+--Find all users who comment about 'programming' ( should have 336 results)
+
+SELECT COUNT(c.*)
+  FROM
+    users u
+    INNER JOIN
+    comments c
+      ON c.user_id = u.id
+  WHERE
+    c.body LIKE '%programming%';
