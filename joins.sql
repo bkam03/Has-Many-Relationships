@@ -7,6 +7,16 @@ SELECT * FROM users;
 SELECT * FROM posts WHERE user_id = 100;
 
 --Create a query to get all posts fields, the user's first name, and the user's last name, from the posts table where the user's id is 200
+
+SELECT *
+  FROM
+    posts
+    INNER JOIN
+    users
+      ON posts.user_id = users.id
+  WHERE
+    posts.user_id = 200;
+
 --Create a query to get all posts fields, and the user's username, from the posts table where the user's first name is 'Norene' and the user's last_name is 'Schmitt'
 --Create a query to get usernames from the users table where the user has created a post after January 1, 2015
 --Create a query to get the post title, post content, and user's username where the user who created the post joined before January 1, 2015
