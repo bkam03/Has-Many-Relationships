@@ -107,6 +107,15 @@ SELECT posts.title AS post_title, users.first_name, users.last_name, c.body AS c
 
 --12 Create a query to get the first name of the author of the comment, last name of the author of the comment, and comment body (aliased to comment_body), where the comment body contains the word 'SSL' and the post content contains the word 'dolorum' ( should have 102 results )
 
-
+SELECT users.first_name, users.last_name, comments.body AS comment_body
+  FROM
+    users
+    INNER JOIN
+    comments
+      ON users.id = comments.user_id
+    INNER JOIN
+    posts
+      ON comments.post_id = posts.id
+  WHERE comments.body LIKE '%SSL%' AND posts.content LIKE '%dolorum%';
 
 --13 Create a query to get the first name of the author of the post (aliased to post_author_first_name), last name of the author of the post (aliased to post_author_last_name), the post title (aliased to post_title), username of the author of the comment (aliased to comment_author_username), and comment body (aliased to comment_body), where the comment body contains the word 'SSL' or 'firewall' and the post content contains the word 'nemo' ( should have 218 results )
