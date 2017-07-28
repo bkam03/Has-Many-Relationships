@@ -162,7 +162,7 @@ SELECT COUNT(comments.*)
 
 --Find all users who comment about 'programming' ( should have 336 results)
 
-SELECT COUNT(c.*)
+SELECT COUNT(*)
   FROM
     users u
     INNER JOIN
