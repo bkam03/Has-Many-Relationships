@@ -109,7 +109,7 @@ SELECT posts.title AS post_title, users.first_name, users.last_name, c.body AS c
       ON users.id = posts.user_id
     INNER JOIN
     comments c
-      ON c.user_id = posts.user_id
+      ON c.post_id = posts.id
     WHERE
       c.body LIKE '%matrix%';
 
